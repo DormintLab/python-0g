@@ -1,0 +1,34 @@
+version: "3"
+dotenv: ['.env']
+vars:
+  RUNNER: ""
+  SOURCES: a0g
+  SOURCES_ROOT: a0g
+tasks:
+  lint:
+    desc: Lint python source files
+    cmds:
+      - "{{.RUNNER}} ruff check --fix {{.SOURCES}}"
+  format:
+    desc: Format python source files
+    aliases: ["fmt"]
+    cmds:
+      - "{{.RUNNER}} python -m ruff format {{.SOURCES}} "
+      - "{{.RUNNER}} python -m isort {{.SOURCES}}"
+  typecheck:
+    desc: Perform type-checking
+    cmd: "{{.RUNNER}} python -m mypy {{.SOURCES}}"
+  clean:
+    desc: Remove all __pycache__ dirs
+    cmd: "{{.RUNNER}} python -m pyclean ."
+
+  tests:
+    desc: RUN tests
+    cmd: "{{.RUNNER}} sudo docker compose exec backend bash -c 'PYTHONPATH=. pytest -v'"
+
+  all:
+    desc: Run the standard set of checks performed in CI
+    cmds:
+      - task: format
+      - task: clean
+      - task: lint

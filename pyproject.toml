@@ -1,6 +1,6 @@
 [project]
 name = "python-0g"
-version = "0.1.0"
+version = "0.4.4"
 description = ""
 authors = [
     {name = "George Kasparyants",email = "gg_plastt@mail.ru"}
@@ -10,11 +10,13 @@ requires-python = ">=3.10,<4.0"
 dependencies = [
     "web3 (>=7.13.0,<8.0.0)",
     "openai (>=1.109.1,<2.0.0)",
-    "dotenv (>=0.9.9,<0.10.0)",
-    "py-mini-racer (>=0.6.0,<0.7.0)",
     "javascript (>=1!1.2.6,<1!2.0.0)",
 ]
 
+include = [
+    { path = "README.md" },
+    { path = "a0g/jsbindings/dist/" }
+]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -25,4 +27,5 @@ ruff = "^0.13.2"
 pyclean = "^3.1.0"
 isort = "^6.0.1"
 mypy = "^1.18.2"
+dotenv = "^0.9.9"
 

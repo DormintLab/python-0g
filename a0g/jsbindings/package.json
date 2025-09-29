@@ -12,6 +12,7 @@
     "demo": "ts-node src/demo-compute-flow.ts"
   },
   "dependencies": {
+    "@0glabs/0g-serving-broker": "^0.4.4",
     "@types/crypto-js": "4.2.2",
     "circomlibjs": "^0.1.7",
     "crypto-js": "4.2.0",

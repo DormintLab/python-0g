@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-0g"
-version = "0.4.4"
+version = "0.4.4.1"
 
 description = ""
 authors = ["George Kasparyants <gg_plastt@mail.ru>"]

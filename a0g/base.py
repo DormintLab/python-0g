@@ -1,22 +1,25 @@
+import json
 import os
+from pathlib import Path
 from typing import List, Optional, Literal
-
 import web3
 from eth_account.signers.local import LocalAccount
+from javascript import require
+from openai import OpenAI, AsyncOpenAI
 from web3.types import ENS
 import dotenv
-
 from .types.account import AccountStructOutput
-from .types.headers import ServingRequestHeaders
 from .types.ledger import LedgerStructOutput
 
 dotenv.load_dotenv()
 
 from .contract import get_abi, get_ca
-from .types.model import ServiceStructOutput
+from .types.model import ServiceStructOutput, ServiceMetadata
 
 
 class A0G:
+    bundle = require(str(Path(__file__).parent / "jsbindings/dist/bundle.js"))
+
     def __init__(
         self,
         private_key: Optional[str] = None,
@@ -41,10 +44,29 @@ class A0G:
 
         self.account: LocalAccount = self.w3.eth.account.from_key(private_key)
 
-        # self.client = openai.OpenAI()
+    def get_openai_client(self, provider: ENS):
+        privider_metadata = self.get_service_metadata(provider)
+        if not privider_metadata["success"]:
+            raise Exception(f"Provider {provider} is not available")
+        return OpenAI(api_key='',
+                      base_url=privider_metadata["endpoint"],
+                      default_headers=privider_metadata["headers"])
 
-    def get_headers(self) -> ServingRequestHeaders:
-        pass
+    def get_openai_async_client(self, provider: ENS):
+        privider_metadata = self.get_service_metadata(provider)
+        if not privider_metadata["success"]:
+            raise Exception(f"Provider {provider} is not available")
+        return AsyncOpenAI(api_key='',
+                           base_url=privider_metadata["endpoint"],
+                           default_headers=privider_metadata["headers"])
+
+    def get_service_metadata(self, provider: ENS) -> ServiceMetadata:
+        obj = self.bundle.getOpenAIHeadersDemo(self.account.key.hex(),
+                                                "Dummy content",
+                                                provider,
+                                                self.rpc_url,
+                                                timeout=100000)
+        return json.loads(obj)
 
     def get_balance(self) -> int:
         balance_wei = self.w3.eth.get_balance(self.account.address)

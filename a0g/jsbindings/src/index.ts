@@ -23,18 +23,18 @@ export async function getOpenAIHeadersDemo(privateKey: string, query: string, pr
             }
         });
 
-        return {
+        return JSON.stringify({
             success: true,
             headers: requestHeaders,
             endpoint: endpoint,
             model: model,
             query: query,
-        }
+        })
 
     } catch (error: any) {
         console.error('Error:', error);
-        return {
+        return JSON.stringify({
             success: false,
-        }
+        })
     }
 }

@@ -1,8 +1,9 @@
 from decimal import Decimal
-from typing import Union, Any
+from typing import Union, Any, TypedDict
 
 import httpx
 from pydantic import BaseModel
+from a0g.types.headers import ServingRequestHeaders
 
 
 class ServiceStructOutput(BaseModel):
@@ -60,3 +61,10 @@ class ServiceStructOutput(BaseModel):
             return 0
         encoded = content.encode("utf-8")
         return len(encoded)
+
+
+class ServiceMetadata(TypedDict, total=False):
+    endpoint: str
+    model: str
+    headers: ServingRequestHeaders
+    success: bool

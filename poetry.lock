@@ -1140,6 +1140,22 @@ colors = ["colorama"]
 plugins = ["setuptools"]
 
 [[package]]
+name = "javascript"
+version = "1!1.2.6"
+description = "Call and interop Node.js APIs with Python"
+optional = false
+python-versions = "<4,>=3.7"
+groups = ["main"]
+files = [
+    {file = "javascript-1!1.2.6-py3-none-any.whl", hash = "sha256:0c68af196d450715bb74e9a25f11db67435070d91ceaff5ef28c4b4c95235ebf"},
+    {file = "javascript-1!1.2.6.tar.gz", hash = "sha256:442e885b54dd9a6afe797dd6d5c3c575ec38da02a7d16749bf315aad0fa620c9"},
+]
+
+[package.extras]
+dev = ["check-manifest"]
+test = ["coverage"]
+
+[[package]]
 name = "jiter"
 version = "0.11.0"
 description = "Fast iterable JSON parser."
@@ -2437,4 +2453,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "8756645549951085d304655d1aed1b8711466ebea28eb3dca654bfc51f8b996a"
+content-hash = "11e653a9406194c643bbd71fd7003dd75227570cd3a3f1844c06dd59d2a54e5b"

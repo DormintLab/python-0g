@@ -1,6 +1,5 @@
 from typing import Literal, TypedDict
 
-
 ServingRequestHeaders = TypedDict(
     "ServingRequestHeaders",
     {
@@ -12,5 +11,5 @@ ServingRequestHeaders = TypedDict(
         "Nonce": str,
         "Signature": str,
         "VLLM-Proxy": str,
-    }
+    },
 )

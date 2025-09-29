@@ -1,4 +1,4 @@
-from typing import TypedDict, Tuple
+from typing import Tuple, TypedDict
 
 
 class SettleSignerKey(TypedDict):

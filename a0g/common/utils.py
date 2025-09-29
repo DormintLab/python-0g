@@ -1,4 +1,3 @@
-from typing import TypedDict, Tuple, List
 from ..types.settle_signer_key import SettleSignerKey
 
 
@@ -31,7 +30,4 @@ def neuron_to_a0gi(value: int) -> float:
 
 def create_settle_signer_key() -> SettleSignerKey:
     # TODO:
-    return {
-        "settleSignerPublicKey": (0, 0),
-        "settleSignerEncryptedPrivateKey": ""
-    }
+    return {"settleSignerPublicKey": (0, 0), "settleSignerEncryptedPrivateKey": ""}

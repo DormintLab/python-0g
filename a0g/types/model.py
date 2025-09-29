@@ -1,8 +1,9 @@
 from decimal import Decimal
-from typing import Union, Any, TypedDict
+from typing import Any, TypedDict, Union
 
 import httpx
 from pydantic import BaseModel
+
 from a0g.types.headers import ServingRequestHeaders
 
 
@@ -17,9 +18,7 @@ class ServiceStructOutput(BaseModel):
     verifiability: str
     additionalInfo: str
 
-    def get_request_headers(self,
-                            content: str,
-                            vllm_proxy: bool = True):
+    def get_request_headers(self, content: str, vllm_proxy: bool = True):
         pass
 
     def get_service_metadata(self):

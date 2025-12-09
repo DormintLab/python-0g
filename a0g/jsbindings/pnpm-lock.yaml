@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@0glabs/0g-serving-broker':
-        specifier: ^0.4.4
-        version: 0.4.4(@types/circomlibjs@0.1.6)(@types/crypto-js@4.2.2)(bufferutil@4.0.9)(circomlibjs@0.1.7(bufferutil@4.0.9)(utf-8-validate@5.0.10))(crypto-js@4.2.0)(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(rollup@4.52.3)(tslib@2.7.0)(typechain@8.3.2(typescript@5.9.2))(typescript@5.9.2)(utf-8-validate@5.0.10)(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))
+        specifier: latest
+        version: 0.6.1(@types/circomlibjs@0.1.6)(@types/crypto-js@4.2.2)(bufferutil@4.0.9)(circomlibjs@0.1.7(bufferutil@4.0.9)(utf-8-validate@5.0.10))(crypto-js@4.2.0)(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(rollup@4.52.3)(typechain@8.3.2(typescript@5.9.2))(typescript@5.9.2)(utf-8-validate@5.0.10)(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))
       '@types/crypto-js':
         specifier: 4.2.2
         version: 4.2.2
@@ -24,20 +24,30 @@ importers:
         specifier: ^6.13.1
         version: 6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
     devDependencies:
+      '@typechain/ethers-v6':
+        specifier: ^0.5.1
+        version: 0.5.1(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(typechain@8.3.2(typescript@5.9.2))(typescript@5.9.2)
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.19.17
       esbuild:
         specifier: ^0.25.10
         version: 0.25.10
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.7.5)(typescript@5.9.2)
+        version: 10.9.2(@types/node@20.19.17)(typescript@5.9.2)
+      typechain:
+        specifier: ^8.3.0
+        version: 8.3.2(typescript@5.9.2)
       typescript:
         specifier: ^5.3.3
         version: 5.9.2
 
 packages:
 
-  '@0glabs/0g-serving-broker@0.4.4':
-    resolution: {integrity: sha512-A6FuR4zKmjt2Ct8hpNlX0EbWfMdjlNnS6YJWjJUbh5dvqPfpwx9sTfd+5rO5NILheq0DOtw7Iim/XHhLFgAEww==}
+  '@0glabs/0g-serving-broker@0.6.1':
+    resolution: {integrity: sha512-/zXUfnGjH3Uxqsk2FdrMfftkj06OvBCtVUSKJJHXTh9ImUkPqUGcA8YaPT+LIdvL3imxxOXRUjTQtRhv3ZyAkQ==}
+    engines: {node: '>=20.0.0'}
     hasBin: true
     peerDependencies:
       '@types/circomlibjs': ^0.1.6
@@ -599,6 +609,9 @@ packages:
   '@types/prettier@2.7.3':
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
 
+  '@types/prompts@2.4.9':
+    resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
+
   '@types/qs@6.14.0':
     resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
 
@@ -797,10 +810,6 @@ packages:
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
-
-  chalk@5.6.2:
-    resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
@@ -1299,6 +1308,10 @@ packages:
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
 
+  kleur@3.0.3:
+    resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
+    engines: {node: '>=6'}
+
   lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
 
@@ -1480,6 +1493,10 @@ packages:
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
 
+  prompts@2.4.2:
+    resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
+    engines: {node: '>= 6'}
+
   proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -1599,6 +1616,9 @@ packages:
   side-channel@1.1.0:
     resolution: {integrity: sha512-ZX99e6tRweoUXqR+VBrslhda51Nh5MTQwou5tnUDgbtyM0dBgmhEDtWGP/xbKn6hqfPRHujUNwz5fy/wbbhnpw==}
     engines: {node: '>= 0.4'}
+
+  sisteransi@1.0.5:
+    resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
   slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
@@ -1833,7 +1853,7 @@ packages:
 
 snapshots:
 
-  '@0glabs/0g-serving-broker@0.4.4(@types/circomlibjs@0.1.6)(@types/crypto-js@4.2.2)(bufferutil@4.0.9)(circomlibjs@0.1.7(bufferutil@4.0.9)(utf-8-validate@5.0.10))(crypto-js@4.2.0)(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(rollup@4.52.3)(tslib@2.7.0)(typechain@8.3.2(typescript@5.9.2))(typescript@5.9.2)(utf-8-validate@5.0.10)(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))':
+  '@0glabs/0g-serving-broker@0.6.1(@types/circomlibjs@0.1.6)(@types/crypto-js@4.2.2)(bufferutil@4.0.9)(circomlibjs@0.1.7(bufferutil@4.0.9)(utf-8-validate@5.0.10))(crypto-js@4.2.0)(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(rollup@4.52.3)(typechain@8.3.2(typescript@5.9.2))(typescript@5.9.2)(utf-8-validate@5.0.10)(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))':
     dependencies:
       '@ethersproject/bytes': 5.8.0
       '@ethersproject/keccak256': 5.8.0
@@ -1849,11 +1869,12 @@ snapshots:
       '@types/jest': 29.5.14
       '@types/node': 20.19.17
       '@types/node-fetch': 2.6.13
+      '@types/prompts': 2.4.9
       adm-zip: 0.5.16
       axios: 1.12.2
       brotli: 1.3.3
       buffer: 6.0.3
-      chalk: 5.6.2
+      chalk: 4.1.2
       circomlibjs: 0.1.7(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       cli-table3: 0.6.5
       commander: 13.1.0
@@ -1866,8 +1887,10 @@ snapshots:
       node-fetch: 3.3.2
       open-jsonrpc-provider: 0.2.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       openai: 4.104.0(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))
+      prompts: 2.4.2
       rollup-plugin-polyfill-node: 0.13.0(rollup@4.52.3)
       stream-browserify: 3.0.0
+      tslib: 2.7.0
       util: 0.12.5
     transitivePeerDependencies:
       - bufferutil
@@ -1875,7 +1898,6 @@ snapshots:
       - encoding
       - rollup
       - supports-color
-      - tslib
       - typechain
       - typescript
       - utf-8-validate
@@ -2249,7 +2271,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
@@ -2409,22 +2431,22 @@ snapshots:
 
   '@types/adm-zip@0.5.7':
     dependencies:
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
 
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
 
   '@types/brotli@1.3.4':
     dependencies:
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
 
   '@types/circomlibjs@0.1.6': {}
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
 
   '@types/crypto-js@4.2.2': {}
 
@@ -2432,7 +2454,7 @@ snapshots:
 
   '@types/express-serve-static-core@5.0.7':
     dependencies:
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.5
@@ -2464,7 +2486,7 @@ snapshots:
 
   '@types/node-fetch@2.6.13':
     dependencies:
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
       form-data: 4.0.4
 
   '@types/node@18.19.127':
@@ -2481,6 +2503,11 @@ snapshots:
 
   '@types/prettier@2.7.3': {}
 
+  '@types/prompts@2.4.9':
+    dependencies:
+      '@types/node': 20.19.17
+      kleur: 3.0.3
+
   '@types/qs@6.14.0': {}
 
   '@types/range-parser@1.2.7': {}
@@ -2490,12 +2517,12 @@ snapshots:
   '@types/send@0.17.5':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
 
   '@types/serve-static@1.15.8':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
       '@types/send': 0.17.5
 
   '@types/stack-utils@2.0.3': {}
@@ -2717,8 +2744,6 @@ snapshots:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
-
-  chalk@5.6.2: {}
 
   ci-info@3.9.0: {}
 
@@ -3350,7 +3375,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -3363,6 +3388,8 @@ snapshots:
   jsonfile@4.0.0:
     optionalDependencies:
       graceful-fs: 4.2.11
+
+  kleur@3.0.3: {}
 
   lodash.camelcase@4.3.0: {}
 
@@ -3378,7 +3405,7 @@ snapshots:
 
   md5.js@1.3.5:
     dependencies:
-      hash-base: 3.0.5
+      hash-base: 3.1.2
       inherits: 2.0.4
       safe-buffer: 5.2.1
 
@@ -3522,6 +3549,11 @@ snapshots:
       react-is: 18.3.1
 
   process-nextick-args@2.0.1: {}
+
+  prompts@2.4.2:
+    dependencies:
+      kleur: 3.0.3
+      sisteransi: 1.0.5
 
   proxy-addr@2.0.7:
     dependencies:
@@ -3721,6 +3753,8 @@ snapshots:
       side-channel-map: 1.0.1
       side-channel-weakmap: 1.0.2
 
+  sisteransi@1.0.5: {}
+
   slash@3.0.0: {}
 
   stack-utils@2.0.6:
@@ -3798,14 +3832,14 @@ snapshots:
     dependencies:
       typescript: 5.9.2
 
-  ts-node@10.9.2(@types/node@22.7.5)(typescript@5.9.2):
+  ts-node@10.9.2(@types/node@20.19.17)(typescript@5.9.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.7.5
+      '@types/node': 20.19.17
       acorn: 8.15.0
       acorn-walk: 8.3.4
       arg: 4.1.3

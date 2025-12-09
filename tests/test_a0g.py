@@ -5,7 +5,9 @@ import dotenv
 dotenv.load_dotenv()
 
 a0g = A0G()
-service = a0g.get_all_services()[1]
+service = a0g.get_all_services()[0]
+print(a0g.get_abi("inference"))
+exit()
 client: openai.OpenAI = a0g.get_openai_client(service.provider)
 
 print(client.chat.completions.create(messages=[

@@ -19,6 +19,7 @@ python = ">=3.10,<4.0"
 web3 = ">=7.13.0,<8.0.0"
 openai = ">=1.109.1,<2.0.0"
 javascript = ">=1!1.2.6,<1!2.0.0"
+notebook = "^7.5.0"
 
 
 [tool.poetry.group.dev.dependencies]

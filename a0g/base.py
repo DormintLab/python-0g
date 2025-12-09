@@ -48,7 +48,8 @@ class A0G:
     #     print(self.w3.eth.get_code(self.inference_contract.address).hex())
     #     print(self.w3.eth.get_code(self.ledger_contract.address).hex())
 
-    def get_openai_client(self, provider: ENS):
+    def get_openai_client(self, provider: ENS,
+                          **kwargs):
         privider_metadata = self.get_service_metadata(provider)
         if not privider_metadata["success"]:
             raise Exception(f"Provider {provider} is not available")
@@ -56,9 +57,11 @@ class A0G:
             api_key="",
             base_url=privider_metadata["endpoint"],
             default_headers=privider_metadata["headers"],
+            **kwargs
         )
 
-    def get_openai_async_client(self, provider: ENS):
+    def get_openai_async_client(self, provider: ENS,
+                                **kwargs):
         privider_metadata = self.get_service_metadata(provider)
         if not privider_metadata["success"]:
             raise Exception(f"Provider {provider} is not available")
@@ -66,6 +69,7 @@ class A0G:
             api_key="",
             base_url=privider_metadata["endpoint"],
             default_headers=privider_metadata["headers"],
+            **kwargs
         )
 
     def get_service_metadata(self, provider: ENS) -> ServiceMetadata:

@@ -230,6 +230,10 @@ def d402(ratings: BaseRatings,
                 description = func.__doc__ + "\n" + "\n".join([f"{k.capitalize()}: {v}" for k, v in tool_stats.items()])
                 wrapper.__doc__ = description
 
+        tool_stats = _llm_verifier.get_tool_stats(resource)
+        description = func.__doc__ + "\n" + "\n".join([f"{k.capitalize()}: {v}" for k, v in tool_stats.items()])
+        wrapper.__doc__ = description
+
         return wrapper
 
     return decorator

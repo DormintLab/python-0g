@@ -1,7 +1,9 @@
 import {ethers} from "ethers";
+// @ts-ignore
+import { Indexer, ZgFile } from '@0glabs/0g-ts-sdk';
 import {createZGComputeNetworkBroker} from "@0glabs/0g-serving-broker";
-// Import TypeChain factories from our bypass file
 
+// Import TypeChain factories from our bypass file
 import {
   InferenceServing__factory,
   LedgerManager__factory,
@@ -101,5 +103,26 @@ export async function getAbi() {
         return JSON.stringify({
             success: false,
         })
+    }
+}
+
+
+export async function uploadToStorage(privateKey: string, rpcUrl: string, indexerRpcUrl: string, path: string) {
+    const provider = new ethers.JsonRpcProvider(rpcUrl);
+    const signer = new ethers.Wallet(privateKey, provider);
+    const indexer = new Indexer(indexerRpcUrl);
+
+    const zgFile = await ZgFile.fromFilePath(path);
+    const [tx, uploadErr] = await indexer.upload(zgFile, rpcUrl, signer);
+    return tx
+}
+
+
+export async function downloadFromStorage(indexerRpcUrl: string, rootHash: string, outputPath: string) {
+    const indexer = new Indexer(indexerRpcUrl);
+    const err = await indexer.download(rootHash, outputPath, true);
+
+    if (err !== null) {
+        throw new Error(`Download error: ${err}`);
     }
 }

@@ -13,6 +13,7 @@ from .contract import get_ca
 from .types.account import AccountStructOutput
 from .types.ledger import LedgerStructOutput
 from .types.model import ServiceMetadata, ServiceStructOutput
+from .types.storage import ZGStorageObject
 
 
 class A0G:
@@ -22,6 +23,7 @@ class A0G:
         self,
         private_key: Optional[str] = None,
         rpc_url: Optional[str] = None,
+        indexer_rpc_url: Optional[str] = None,
         network: Literal["testnet", "mainnet"] = "mainnet",
     ):
         if private_key is None:
@@ -34,7 +36,13 @@ class A0G:
             if rpc_url is None:
                 rpc_url = "https://evmrpc-testnet.0g.ai" if network == "testnet" else "https://evmrpc.0g.ai"
 
+        if indexer_rpc_url is None:
+            indexer_rpc_url = os.environ.get("A0G_INDEXER_RPC_URL")
+            if indexer_rpc_url is None:
+                indexer_rpc_url = "https://indexer-storage-testnet-turbo.0g.ai" if network == "testnet" else "https://indexer-storage-turbo.0g.ai"
+
         self.rpc_url = rpc_url
+        self.indexer_rpc_url = indexer_rpc_url
 
         self.w3 = self.get_w3(rpc_url)
         self.inference_contract = self.get_contract(self.w3, "inference",
@@ -184,5 +192,24 @@ class A0G:
             timeout=100000,
         )
         raw = json.loads(raw)
-        print(raw)
         return raw[name]
+
+    def upload_to_storage(self, path: Path):
+        raw = self.bundle.uploadToStorage(
+            self.account.key.hex(),
+            self.rpc_url,
+            self.indexer_rpc_url,
+            str(path.absolute()),
+            timeout=100000,
+        )
+        return ZGStorageObject(root_hash=raw["rootHash"],
+                               tx_hash=raw["txHash"])
+
+    def download_from_storage(self, obj: ZGStorageObject, path: Path):
+        raw = self.bundle.downloadFromStorage(
+            self.indexer_rpc_url,
+            obj.root_hash,
+            str(path.absolute()),
+            timeout=100000,
+        )
+        return raw

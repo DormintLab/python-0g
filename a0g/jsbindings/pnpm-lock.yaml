@@ -11,6 +11,9 @@ importers:
       '@0glabs/0g-serving-broker':
         specifier: latest
         version: 0.6.1(@types/circomlibjs@0.1.6)(@types/crypto-js@4.2.2)(bufferutil@4.0.9)(circomlibjs@0.1.7(bufferutil@4.0.9)(utf-8-validate@5.0.10))(crypto-js@4.2.0)(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(rollup@4.52.3)(typechain@8.3.2(typescript@5.9.2))(typescript@5.9.2)(utf-8-validate@5.0.10)(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))
+      '@0glabs/0g-ts-sdk':
+        specifier: latest
+        version: 0.3.3(bufferutil@4.0.9)(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10)
       '@types/crypto-js':
         specifier: 4.2.2
         version: 4.2.2
@@ -54,6 +57,11 @@ packages:
       '@types/crypto-js': ^4.2.2
       circomlibjs: ^0.1.6
       crypto-js: ^4.2.0
+      ethers: 6.13.1
+
+  '@0glabs/0g-ts-sdk@0.3.3':
+    resolution: {integrity: sha512-Ug/9gdeBnmTYU6obPXWChD8XqNUSyOI53vWWsbK2IXNymQc84gd1cDneQ2Vz2AZP26290pIp5FgmNgkVNOyxIA==}
+    peerDependencies:
       ethers: 6.13.1
 
   '@adraffy/ens-normalize@1.10.1':
@@ -1903,6 +1911,18 @@ snapshots:
       - utf-8-validate
       - ws
       - zod
+
+  '@0glabs/0g-ts-sdk@0.3.3(bufferutil@4.0.9)(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10)':
+    dependencies:
+      '@ethersproject/bytes': 5.8.0
+      '@ethersproject/keccak256': 5.8.0
+      ethers: 6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      open-jsonrpc-provider: 0.2.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
 
   '@adraffy/ens-normalize@1.10.1': {}
 

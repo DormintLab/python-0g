@@ -12,9 +12,9 @@
     "demo": "ts-node src/demo-compute-flow.ts",
     "build:bundle": "esbuild src/index.ts --bundle --platform=node --format=cjs --target=node18 --outfile=dist/bundle.js"
   },
-
   "dependencies": {
     "@0glabs/0g-serving-broker": "latest",
+    "@0glabs/0g-ts-sdk": "latest",
     "@types/crypto-js": "4.2.2",
     "circomlibjs": "^0.1.7",
     "crypto-js": "4.2.0",

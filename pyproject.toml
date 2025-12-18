@@ -20,6 +20,8 @@ web3 = ">=7.13.0,<8.0.0"
 openai = ">=1.109.1,<2.0.0"
 javascript = ">=1!1.2.6,<1!2.0.0"
 notebook = "^7.5.0"
+langchain = {version = "^1.2.0", optional = true}
+langchain-openai = {version = "^1.1.5", optional = true}
 
 
 [tool.poetry.group.dev.dependencies]
@@ -32,3 +34,6 @@ dotenv = "^0.9.9"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.extras]
+langchain = ["langchain", "langchain-openai"]

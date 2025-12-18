@@ -5212,9 +5212,9 @@ files = [
 cffi = ["cffi (>=1.17,<2.0) ; platform_python_implementation != \"PyPy\" and python_version < \"3.14\"", "cffi (>=2.0.0b) ; platform_python_implementation != \"PyPy\" and python_version >= \"3.14\""]
 
 [extras]
-langchain = ["langchain", "langchain-openai"]
+langchain = ["langchain", "langchain-core", "langchain-openai"]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "908543d63f3d7e820eb32ee1cd885a5f0e9b523325f74aef20a823ceb466a274"
+content-hash = "19ccc6ea5597d7774f7c160e361bec42d04c8164aeb4aff55a4ebe132b7c495f"

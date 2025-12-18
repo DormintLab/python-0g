@@ -22,6 +22,7 @@ javascript = ">=1!1.2.6,<1!2.0.0"
 notebook = "^7.5.0"
 langchain = {version = "^1.2.0", optional = true}
 langchain-openai = {version = "^1.1.5", optional = true}
+langchain-core = {version = "^1.2.2", optional = true}
 
 
 [tool.poetry.group.dev.dependencies]
@@ -36,4 +37,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.extras]
-langchain = ["langchain", "langchain-openai"]
+langchain = ["langchain", "langchain-openai", "langchain-core"]

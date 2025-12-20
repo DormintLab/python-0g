@@ -1,5 +1,5 @@
 """
-D402 module for tool rating management
+D402 module for tool rating management and MCP server registry
 """
 
 from .ratings import Ratings, BaseRatings

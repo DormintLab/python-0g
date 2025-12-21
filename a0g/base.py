@@ -1,13 +1,14 @@
 import json
 import os
 from pathlib import Path
-from typing import List, Literal, Optional
+from typing import List, Literal, Optional, Dict
 
 import web3
 from eth_account.signers.local import LocalAccount
 from javascript import require
 from openai import AsyncOpenAI, OpenAI
-from web3.types import ENS
+from web3 import Web3
+from web3.types import ENS, TxParams
 
 from .contract import get_ca
 from .types.account import AccountStructOutput
@@ -55,6 +56,32 @@ class A0G:
     # def checkup(self):
     #     print(self.w3.eth.get_code(self.inference_contract.address).hex())
     #     print(self.w3.eth.get_code(self.ledger_contract.address).hex())
+
+    def pay(self, to: str, amount: float,
+            meta_info: str = ""):
+        amount = Web3.to_wei(amount, "ether")
+        if self.w3.ens and not Web3.is_address(to):
+            to_address = self.w3.ens.address(to)
+            if not to_address:
+                raise ValueError(f"ENS name {to} не разрешился в адрес")
+        else:
+            to_address = Web3.to_checksum_address(to)
+
+        tx: Dict = {
+            "to": to_address,
+            "value": amount,
+            "from": self.account.address,
+            "nonce": self.w3.eth.get_transaction_count(self.account.address),
+            "data": meta_info.encode("utf-8") if meta_info else b"",
+        }
+
+        estimated_gas = self.w3.eth.estimate_gas(TxParams(**tx))
+        tx["gas"] = estimated_gas
+        tx["gasPrice"] = self.w3.eth.gas_price
+        signed_tx = self.account.sign_transaction(tx)
+        tx_hash = self.w3.eth.send_raw_transaction(signed_tx.raw_transaction)
+        receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
+        return receipt
 
     def get_openai_client(self, provider: ENS,
                           **kwargs):
